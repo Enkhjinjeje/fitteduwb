@@ -1,0 +1,39 @@
+{
+  "errors": [
+    "Cannot access 'tw' before initialization"
+  ],
+  "motionBefore": "translate3d(195px, 350.335px, 186.402px) translate(-50%, -50%)",
+  "motionAfter": "translate3d(195px, 350.335px, 186.402px) translate(-50%, -50%)",
+  "firstTab": "Skip to events",
+  "skip": {
+    "hash": "#events",
+    "scroll": 844
+  },
+  "grid": {
+    "pressed": "true",
+    "notes": [
+      "none",
+      "none"
+    ]
+  },
+  "picked": [
+    {
+      "text": "Black Superstars\n\nClassic hip-hop\n\nHow to wear it: Under black baggy jeans, laces loose.",
+      "opacity": "0"
+    },
+    {
+      "text": "Dior Sports crewneck\n\nVintage logo\n\nHow to wear it: Over a CK waistband and dark raw denim, finished with a fitted cap.",
+      "opacity": "1"
+    }
+  ],
+  "later": [
+    {
+      "text": "Black Superstars\n\nClassic hip-hop\n\nHow to wear it: Under black baggy jeans, laces loose.",
+      "opacity": "0"
+    },
+    {
+      "text": "Dior Sports crewneck\n\nVintage logo\n\nHow to wear it: Over a CK waistband and dark raw denim, finished with a fitted cap.",
+      "opacity": "1"
+    }
+  ]
+}

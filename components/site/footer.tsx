@@ -11,7 +11,7 @@ const facts: [string, ReactNode][] = [
 // A dark close to the page: the way in (Instagram, Linktree), the facts, and the name set huge.
 export function Footer() {
   return (
-    <footer className="overflow-hidden bg-ink text-chalk">
+    <footer id="join" className="overflow-hidden bg-ink text-chalk">
       <div className="px-[3.5vw] pt-[max(96px,9vw)] max-md:px-5">
         <h2 data-reveal className="max-w-[12ch] text-[clamp(44px,6.4vw,112px)] leading-[.92] font-light tracking-[-0.045em]">
           See you at the next one.

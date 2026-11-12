@@ -26,10 +26,6 @@ export const viewport: Viewport = { themeColor: '#e8e7e3' };
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={fonts} suppressHydrationWarning>
-      <head>
-        {/* Marks the page as scripted before first paint, so [data-reveal] content can start hidden without a flash. */}
-        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
-      </head>
       <body>{children}</body>
     </html>
   );

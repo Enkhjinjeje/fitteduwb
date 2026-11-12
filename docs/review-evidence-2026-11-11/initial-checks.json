@@ -1,0 +1,207 @@
+[
+  {
+    "engine": "chromium",
+    "width": 1440,
+    "height": 900,
+    "motion": "no-preference",
+    "errors": [],
+    "hero": {
+      "height": 900,
+      "descriptionVisible": "block",
+      "overflow": false
+    },
+    "resources": {
+      "resources": 56,
+      "transfer": 6499987,
+      "images": 929793
+    },
+    "grid": {
+      "view": "grid",
+      "visibleNotes": 0
+    },
+    "end": "Event 12 of 12: DIY Meet × Stitched",
+    "home": "Event 1 of 12: Fitted UWB starts",
+    "stageFocus": {
+      "outline": "rgb(240, 83, 43) none 2px",
+      "focused": true
+    },
+    "events": [
+      {
+        "label": "Fitted UWB starts, Thu May 15, 2025. Open details.",
+        "heading": "Fitted UWB starts",
+        "url": "http://127.0.0.1:4317/",
+        "focus": "See it on Instagram ↗",
+        "scroll": 0
+      }
+    ],
+    "escape": {
+      "closed": true,
+      "focus": "Fitted UWB starts, Thu May 15, 2025. Open details."
+    },
+    "failure": "locator.click: Error: strict mode violation: getByRole('button', { name: 'Next' }) resolved to 2 elements:\n    1) <button type=\"button\" class=\"min-h-11 cursor-pointer disabled:opacity-30\">…</button> aka getByRole('button', { name: 'Next →' })\n    2) <button id=\"next-logo\" aria-haspopup=\"menu\" data-next-mark=\"true\" aria-expanded=\"false\" aria-label=\"Open Next.js Dev Tools\" data-nextjs-dev-tools-button=\"true\" aria-controls=\"nextjs-dev-tools-menu\">…</button> aka getByRole('button', { name: 'Open Next.js Dev Tools' })\n\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Next' })\u001b[22m\n"
+  },
+  {
+    "engine": "chromium",
+    "width": 390,
+    "height": 844,
+    "motion": "no-preference",
+    "errors": [],
+    "hero": {
+      "height": 844,
+      "descriptionVisible": "none",
+      "overflow": false
+    },
+    "resources": {
+      "resources": 57,
+      "transfer": 6569294,
+      "images": 999097
+    },
+    "grid": {
+      "view": "grid",
+      "visibleNotes": 0
+    },
+    "end": "Event 12 of 12: DIY Meet × Stitched",
+    "home": "Event 1 of 12: Fitted UWB starts",
+    "stageFocus": {
+      "outline": "rgb(240, 83, 43) none 2px",
+      "focused": true
+    },
+    "events": [
+      {
+        "label": "Fitted UWB starts, Thu May 15, 2025. Open details.",
+        "heading": "Fitted UWB starts",
+        "url": "http://127.0.0.1:4317/",
+        "focus": "See it on Instagram ↗",
+        "scroll": 0
+      }
+    ],
+    "escape": {
+      "closed": true,
+      "focus": "Fitted UWB starts, Thu May 15, 2025. Open details."
+    },
+    "failure": "locator.click: Error: strict mode violation: getByRole('button', { name: 'Next' }) resolved to 2 elements:\n    1) <button type=\"button\" class=\"min-h-11 cursor-pointer disabled:opacity-30\">…</button> aka getByRole('button', { name: 'Next →' })\n    2) <button id=\"next-logo\" aria-haspopup=\"menu\" data-next-mark=\"true\" aria-expanded=\"false\" aria-label=\"Open Next.js Dev Tools\" data-nextjs-dev-tools-button=\"true\" aria-controls=\"nextjs-dev-tools-menu\">…</button> aka getByRole('button', { name: 'Open Next.js Dev Tools' })\n\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Next' })\u001b[22m\n"
+  },
+  {
+    "engine": "chromium",
+    "width": 320,
+    "height": 568,
+    "motion": "no-preference",
+    "errors": [],
+    "hero": {
+      "height": 780,
+      "descriptionVisible": "none",
+      "overflow": false
+    },
+    "resources": {
+      "resources": 57,
+      "transfer": 6569291,
+      "images": 999097
+    },
+    "grid": {
+      "view": "grid",
+      "visibleNotes": 0
+    },
+    "end": "Event 12 of 12: DIY Meet × Stitched",
+    "home": "Event 1 of 12: Fitted UWB starts",
+    "stageFocus": {
+      "outline": "rgb(240, 83, 43) none 2px",
+      "focused": true
+    },
+    "events": [
+      {
+        "label": "Fitted UWB starts, Thu May 15, 2025. Open details.",
+        "heading": "Fitted UWB starts",
+        "url": "http://127.0.0.1:4317/",
+        "focus": "First postFitted UWB startsWhenThu May 15, 2025WhereInstagramThe club's first post on @fitted.uwb.See it on Instagram ↗Close",
+        "scroll": 0
+      }
+    ],
+    "escape": {
+      "closed": true,
+      "focus": "Fitted UWB starts, Thu May 15, 2025. Open details."
+    },
+    "failure": "locator.click: Error: strict mode violation: getByRole('button', { name: 'Next' }) resolved to 2 elements:\n    1) <button type=\"button\" class=\"min-h-11 cursor-pointer disabled:opacity-30\">…</button> aka getByRole('button', { name: 'Next →' })\n    2) <button id=\"next-logo\" aria-haspopup=\"menu\" data-next-mark=\"true\" aria-expanded=\"false\" aria-label=\"Open Next.js Dev Tools\" data-nextjs-dev-tools-button=\"true\" aria-controls=\"nextjs-dev-tools-menu\">…</button> aka getByRole('button', { name: 'Open Next.js Dev Tools' })\n\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Next' })\u001b[22m\n"
+  },
+  {
+    "engine": "chromium",
+    "width": 1440,
+    "height": 900,
+    "motion": "reduce",
+    "errors": [],
+    "hero": {
+      "height": 900,
+      "descriptionVisible": "block",
+      "overflow": false
+    },
+    "resources": {
+      "resources": 60,
+      "transfer": 6517881,
+      "images": 929793
+    },
+    "grid": {
+      "view": "grid",
+      "visibleNotes": 0
+    },
+    "end": "Event 12 of 12: DIY Meet × Stitched",
+    "home": "Event 1 of 12: Fitted UWB starts",
+    "stageFocus": {
+      "outline": "rgb(240, 83, 43) none 2px",
+      "focused": true
+    },
+    "events": [
+      {
+        "label": "Fitted UWB starts, Thu May 15, 2025. Open details.",
+        "heading": "Fitted UWB starts",
+        "url": "http://127.0.0.1:4317/",
+        "focus": "See it on Instagram ↗",
+        "scroll": 0
+      }
+    ],
+    "escape": {
+      "closed": true,
+      "focus": "Fitted UWB starts, Thu May 15, 2025. Open details."
+    },
+    "failure": "locator.click: Error: strict mode violation: getByRole('button', { name: 'Next' }) resolved to 2 elements:\n    1) <button type=\"button\" class=\"min-h-11 cursor-pointer disabled:opacity-30\">…</button> aka getByRole('button', { name: 'Next →' })\n    2) <button id=\"next-logo\" aria-haspopup=\"menu\" data-next-mark=\"true\" aria-expanded=\"false\" aria-label=\"Open Next.js Dev Tools\" data-nextjs-dev-tools-button=\"true\" aria-controls=\"nextjs-dev-tools-menu\">…</button> aka getByRole('button', { name: 'Open Next.js Dev Tools' })\n\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Next' })\u001b[22m\n"
+  },
+  {
+    "engine": "webkit",
+    "width": 390,
+    "height": 844,
+    "motion": "reduce",
+    "errors": [],
+    "hero": {
+      "height": 844,
+      "descriptionVisible": "none",
+      "overflow": false
+    },
+    "resources": {
+      "resources": 52,
+      "transfer": 5601616,
+      "images": 0
+    },
+    "grid": {
+      "view": "grid",
+      "visibleNotes": 0
+    },
+    "end": "Event 12 of 12: DIY Meet × Stitched",
+    "home": "Event 1 of 12: Fitted UWB starts",
+    "stageFocus": {
+      "outline": "2px none rgb(240, 83, 43)",
+      "focused": true
+    },
+    "events": [
+      {
+        "label": "Fitted UWB starts, Thu May 15, 2025. Open details.",
+        "heading": "Fitted UWB starts",
+        "url": "http://127.0.0.1:4317/",
+        "focus": "See it on Instagram ↗",
+        "scroll": 0
+      }
+    ],
+    "escape": {
+      "closed": true,
+      "focus": "Fitted UWB starts, Thu May 15, 2025. Open details."
+    },
+    "failure": "locator.click: Error: strict mode violation: getByRole('button', { name: 'Next' }) resolved to 2 elements:\n    1) <button type=\"button\" class=\"min-h-11 cursor-pointer disabled:opacity-30\">…</button> aka getByRole('button', { name: 'Next →' })\n    2) <button id=\"next-logo\" aria-haspopup=\"menu\" data-next-mark=\"true\" aria-expanded=\"false\" aria-label=\"Open Next.js Dev Tools\" data-nextjs-dev-tools-button=\"true\" aria-controls=\"nextjs-dev-tools-menu\">…</button> aka getByRole('button', { name: 'Open Next.js Dev Tools' })\n\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Next' })\u001b[22m\n"
+  }
+]

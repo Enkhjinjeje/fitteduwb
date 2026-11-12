@@ -1,0 +1,27 @@
+{
+  "reducedClick": [
+    {
+      "text": "Black Superstars\n\nClassic hip-hop\n\nHow to wear it: Under black baggy jeans, laces loose.",
+      "opacity": "0"
+    },
+    {
+      "text": "Dior Sports crewneck\n\nVintage logo\n\nHow to wear it: Over a CK waistband and dark raw denim, finished with a fitted cap.",
+      "opacity": "1"
+    }
+  ],
+  "reducedAfter": [
+    {
+      "text": "",
+      "opacity": "1"
+    },
+    {
+      "text": "",
+      "opacity": "1"
+    }
+  ],
+  "offline": "Event 2 of 12: First General Meeting",
+  "failedScripts": {
+    "ctaOpacity": "0",
+    "jsClass": true
+  }
+}

@@ -129,7 +129,7 @@ export const events: ClubEvent[] = [
       'Dress code: colorful. Food and drinks provided.',
     ],
     photos: [],
-    ground: '#fde4ef', ink: '#1b78b5', face: 'font-swap',
+    ground: '#fde4ef', ink: '#126292', face: 'font-swap',
   },
   {
     id: 'nitya',

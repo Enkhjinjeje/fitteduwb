@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useState } from 'react';
+import { flushSync } from 'react-dom';
 import gsap from 'gsap';
 import { Flip } from 'gsap/Flip';
 import { CustomEase } from 'gsap/CustomEase';
@@ -51,7 +52,9 @@ export function useRing() {
     digits: useRef<HTMLSpanElement[]>([]),
     names: useRef<HTMLSpanElement>(null),
   };
-  const api = useRef<{ setView: (v: View) => void; showPair: (picked?: number) => void }>(null);
+  const api = useRef<{ setView: (v: View) => void; showPair: (picked?: number) => void; setPaused: (paused: boolean) => void }>(null);
+  const [reducedMotion, setReducedMotion] = useState(false);
+  const [paused, setPausedState] = useState(false);
   const [view, setViewState] = useState<View>('carousel');
   const [pair, setPair] = useState<Pair>(sideRecord(null));
 
@@ -59,7 +62,11 @@ export function useRing() {
     const el = refs.root.current!;
     const stage = refs.stage.current!;
     const carousel = refs.carousel.current!;
-    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const media = matchMedia('(prefers-reduced-motion: reduce)');
+    let reduced = media.matches;
+    let paused = reduced;
+    setPausedState(paused);
+    setReducedMotion(reduced);
     const canHover = matchMedia('(hover: hover) and (pointer: fine)').matches;
     const imgEase = CustomEase.create('ringImg', 'M0,0 C0.16,1 0.3,1 1,1');
 
@@ -75,7 +82,7 @@ export function useRing() {
 
       if (phone) {
         // A column: header, ring, the two picked pieces with their notes, then the title.
-        const header = 76, title = 96, gap = 14;
+        const header = 150, title = 130, gap = 14;
         const below = Math.min(w * 0.43 * 0.62, 120) * 1.08 + 172;   // picked piece + up to 7 lines of notes
         const room = h - header - title - below - gap * 2;
         for (let k = 0; k < 2; k++) {
@@ -157,6 +164,7 @@ export function useRing() {
         const k = (r.width + (s.width - r.width) * p.t) / s.width;
         img.style.transform = `translate(${(r.left - s.left) * (1 - p.t)}px, ${(r.top - s.top) * (1 - p.t)}px) scale(${k})`;
       };
+      if (reduced || paused) { p.t = to; draw(); end(); return; }
       draw();
       const tw = gsap.to(p, {
         t: to, duration: reduced ? 0 : FLY_DUR, ease, onUpdate: draw,
@@ -200,12 +208,12 @@ export function useRing() {
     };
 
     const showPair = (picked?: number) => {
-      if (view !== 'carousel') return;
+      if (view !== 'carousel' || paused) return;
       returnPair(true);
       const { l, r } = extremes();
       current = { left: l, right: r };
       if (picked !== undefined) current[across(picked) < 0 ? 'left' : 'right'] = picked;
-      setPair(current);
+      flushSync(() => setPair(current));
 
       SIDES.forEach(side => {
         const i = current[side]!;
@@ -262,11 +270,29 @@ export function useRing() {
           : Math.min(mod(i - lead, N), mod(lead - i, N)) * 0.02),
         onComplete: () => {
           flipping = false;
-          if (next === 'carousel' && !reduced) schedule(2.5, () => showPair());
+          if (next === 'carousel' && !reduced && !paused) schedule(2.5, () => showPair());
         },
       });
     };
-    api.current = { setView, showPair };
+    const setPaused = (value: boolean) => {
+      paused = value || reduced;
+      setPausedState(paused);
+      spotTimer?.kill();
+      if (paused) SIDES.forEach(land);
+      else if (view === 'carousel') schedule(2.5, () => showPair());
+    };
+    const onMotionChange = () => {
+      reduced = media.matches;
+      setReducedMotion(reduced);
+      if (reduced) {
+        setPaused(true);
+        Flip.killFlipsOf(refs.cards.current);
+        flipping = false;
+        gsap.killTweensOf(refs.imgs.current);
+      }
+    };
+    media.addEventListener('change', onMotionChange);
+    api.current = { setView, showPair, setPaused };
 
     /* ── Input ──────────────────────────────────────────────────────────── */
 
@@ -294,7 +320,7 @@ export function useRing() {
       const dt = Math.min(dtMs, 64) / 1000 || 0.016;
       if (view === 'carousel' && !flipping) {
         if (steering) { angle = damp(angle, target, KEY_WEIGHT, dt); dirty = true; }
-        else if (!reduced) { momentum = damp(momentum, DRIFT * dir, MOMENTUM_DECAY, dt); angle += momentum * dt; dirty = true; }
+        else if (!reduced && !paused) { momentum = damp(momentum, DRIFT * dir, MOMENTUM_DECAY, dt); angle += momentum * dt; dirty = true; }
         const idx = mod(Math.round(-angle / SLICE), N);
         if (idx !== activeIdx) {
           activeIdx = idx;
@@ -336,8 +362,9 @@ export function useRing() {
       gsap.ticker.remove(tick);
       ro.disconnect();
       el.removeEventListener('keydown', onKey);
+      media.removeEventListener('change', onMotionChange);
     };
   }, { scope: refs.root });
 
-  return { refs, api, view, pair };
+  return { refs, api, view, pair, paused, reducedMotion };
 }

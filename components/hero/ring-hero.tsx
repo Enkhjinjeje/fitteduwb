@@ -1,22 +1,31 @@
 'use client';
 
+import { useEffect, useRef, useState } from 'react';
 import { pieces, type Piece } from '@/lib/pieces';
 import { SIDES, useRing, type View } from './use-ring';
 
 // The first screen: a ring of clothing around the logo. Every few seconds the pieces at the far left
 // and far right fly up to the side panels with a note on how to wear them. All motion is in use-ring.ts.
 export function RingHero() {
-  const { refs, api, view, pair } = useRing();
+  const { refs, api, view, pair, paused, reducedMotion } = useRing();
+  const [selected, setSelected] = useState<Piece | null>(null);
+  const detail = useRef<HTMLElement>(null);
+  const trigger = useRef<HTMLButtonElement | null>(null);
+  useEffect(() => {
+    if (selected) detail.current?.focus({ preventScroll: false });
+  }, [selected]);
 
   return (
+    <>
     <header
       ref={refs.root}
       id="top"
       tabIndex={0}
-      data-view="carousel"
+      data-view={view}
       aria-label="A spinning ring of clothing pieces. Arrow keys turn it, G switches to a grid."
-      className="group/rg relative h-svh min-h-[680px] overflow-hidden bg-chalk outline-none select-none max-md:min-h-[780px]"
+      className="group/rg relative h-svh min-h-[680px] overflow-hidden bg-chalk focus-visible:outline-offset-[-4px] select-none max-md:min-h-[780px]"
     >
+      <p className="absolute left-5 right-5 top-20 z-[710] max-w-[34ch] text-[16px] leading-snug md:hidden">UW Bothell’s student fashion club. Swaps, DIY nights and outfit hikes.</p>
       <div ref={refs.stage} className="absolute inset-0">
         {/* The ring: the logo in the middle, one positioned wrapper per piece. */}
         <div ref={refs.carousel} className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 [perspective:4000px]">
@@ -34,7 +43,11 @@ export function RingHero() {
                 ref={n => { if (n) refs.cards.current[i] = n; }}
                 type="button"
                 aria-label={`${p.name}, ${p.style}. Show how to wear it.`}
-                onClick={() => api.current?.showPair(i)}
+                onClick={e => {
+                  trigger.current = e.currentTarget;
+                  api.current?.setPaused(true);
+                  setSelected(p);
+                }}
                 className="block h-[calc(var(--rg-card-w)*1.08)] w-(--rg-card-w)"
               >
                 <img ref={n => { if (n) refs.imgs.current[i] = n; }} src={p.src} alt={p.alt} draggable={false} className="pointer-events-none size-full object-contain" />
@@ -69,7 +82,7 @@ export function RingHero() {
       ))}
 
       {/* Bottom bar: the name, the front piece's number and name, and the ring/grid switch. */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[700] flex items-end justify-between gap-4 px-[3.5vw] pb-7 max-md:px-5 max-md:pb-5">
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[700] flex items-end justify-between gap-4 px-[3.5vw] pb-7 max-md:flex-wrap max-md:px-5 max-md:pb-5">
         <div data-hud>
           <h1 className="text-[clamp(44px,4.2vw,68px)] leading-none font-normal tracking-[-0.04em]">Fitted UWB</h1>
           <p className="mt-3 max-w-[34ch] text-[max(18px,1.25vw)] leading-snug max-md:hidden">UW Bothell&apos;s student fashion club. Swaps, bleached tees, DIY nights and outfit hikes.</p>
@@ -92,16 +105,37 @@ export function RingHero() {
           </span>
         </div>
 
-        <ViewSwitch view={view} onChange={v => api.current?.setView(v)} />
+        <div className="pointer-events-auto flex flex-col items-end gap-3">
+          <button type="button" aria-pressed={paused} disabled={reducedMotion} onClick={() => api.current?.setPaused(!paused)} className="min-h-11 rounded-full bg-chalk px-3 text-small underline underline-offset-4">
+            {reducedMotion ? 'Motion reduced' : paused ? 'Resume motion' : 'Pause motion'}
+          </button>
+          <ViewSwitch view={view} onChange={v => api.current?.setView(v)} />
+        </div>
       </div>
     </header>
+    {selected && (
+      <section ref={detail} tabIndex={-1} aria-labelledby="piece-title" className="scroll-mt-24 bg-chalk px-5 py-12 focus-visible:outline-offset-[-4px] md:px-[3.5vw]">
+        <div className="mx-auto grid max-w-4xl gap-8 md:grid-cols-[180px_1fr]">
+          <img src={selected.src} alt={selected.alt} width={180} height={200} className="h-48 w-44 object-contain" />
+          <div>
+            <h2 id="piece-title" className="text-3xl">{selected.name}</h2>
+            <p className="mt-2 text-stone">{selected.style}</p>
+            <p className="mt-4 max-w-[60ch]">{selected.summary}</p>
+            <p className="mt-3 max-w-[60ch]"><strong>How to wear it: </strong>{selected.wear}</p>
+            <p className="mt-5 text-small text-stone">Image adapted from a Pinterest flat-lay. Original photographer and source link have not been verified.</p>
+            <button type="button" className="mt-5 min-h-11 underline underline-offset-4" onClick={() => { setSelected(null); trigger.current?.focus(); }}>Back to clothing</button>
+          </div>
+        </div>
+      </section>
+    )}
+    </>
   );
 }
 
 // What a picked piece is and how to wear it. Filled in when the piece lands (see use-ring.ts).
 function PieceNote({ piece, noteRef }: { piece: Piece | null; noteRef: (n: HTMLDivElement | null) => void }) {
   return (
-    <div ref={noteRef} aria-live="polite" className="mt-5 grid gap-2 max-md:mt-3 max-md:gap-1">
+    <div ref={noteRef} className="mt-5 grid gap-2 max-md:mt-3 max-md:gap-1">
       {piece && <>
         <p className="text-lead leading-tight font-medium max-md:text-[17px]">{piece.name}</p>
         <p className="text-small text-stone">{piece.style}</p>

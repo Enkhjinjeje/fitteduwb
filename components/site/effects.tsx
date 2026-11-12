@@ -42,7 +42,7 @@ export function Effects() {
   }, []);
 
   return (
-    <div ref={dot} aria-hidden="true" data-on="false" data-view="false" className="group/c pointer-events-none fixed top-0 left-0 z-[80]">
+    <div ref={dot} data-motion-cursor aria-hidden="true" data-on="false" data-view="false" className="group/c pointer-events-none fixed top-0 left-0 z-[80]">
       <span className="absolute -top-[7px] -left-[7px] grid size-[14px] place-items-center rounded-full bg-tomato text-[0px] text-ink opacity-0 transition-all duration-400 ease-expo group-data-[on=true]/c:opacity-100 group-data-[view=true]/c:-top-12 group-data-[view=true]/c:-left-12 group-data-[view=true]/c:size-24 group-data-[view=true]/c:text-[15px]">
         View
       </span>

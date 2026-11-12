@@ -1,0 +1,42 @@
+[
+  {
+    "name": "chromium-1440",
+    "checks": [
+      "persistent keyboard selection in grid and ring; focus returns",
+      "event keyboard navigation, visible focus, Back/Forward, Escape",
+      "all 12 direct event URLs; close; unknown ID recovery",
+      "no page exceptions"
+    ],
+    "pass": true
+  },
+  {
+    "name": "chromium-390",
+    "checks": [
+      "persistent keyboard selection in grid and ring; focus returns",
+      "event keyboard navigation, visible focus, Back/Forward, Escape",
+      "all 12 direct event URLs; close; unknown ID recovery",
+      "no page exceptions"
+    ],
+    "pass": true
+  },
+  {
+    "name": "chromium-320",
+    "checks": [
+      "persistent keyboard selection in grid and ring; focus returns",
+      "event keyboard navigation, visible focus, Back/Forward, Escape",
+      "all 12 direct event URLs; close; unknown ID recovery",
+      "no page exceptions"
+    ],
+    "pass": true
+  },
+  {
+    "name": "webkit-390",
+    "checks": [
+      "persistent keyboard selection in grid and ring; focus returns",
+      "event keyboard navigation, visible focus, Back/Forward, Escape",
+      "all 12 direct event URLs; close; unknown ID recovery",
+      "no page exceptions"
+    ],
+    "pass": true
+  }
+]

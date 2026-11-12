@@ -1,0 +1,12 @@
+{
+  "liveReducedMotion": "passed; ring stationary and custom cursor hidden",
+  "browserErrors": [],
+  "brokenLoadedImages": [],
+  "reflowViewport": [
+    720,
+    450
+  ],
+  "navigationBottom": 432.5,
+  "productionBuild": "npm run build -- --webpack: passed",
+  "typecheck": "passed"
+}
